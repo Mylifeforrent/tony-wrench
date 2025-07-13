@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Maven POM文件 - tony-wrench项目
+    这是一个多模块Maven项目，用于构建Spring Boot Starter组件
+    主要功能：提供动态配置中心等工具组件
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <!-- 继承Spring Boot父POM，获取Spring Boot的依赖管理和插件配置 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.12</version>
+        <relativePath/>
+    </parent>
+    
+    <!-- 项目基本信息 -->
+    <groupId>com.study.tony.wrench</groupId>
+    <artifactId>tony-wrench</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging> <!-- 打包类型为pom，表示这是一个父项目 -->
+    <name>tony-wrench</name>
+    <description>tony-wrench</description>
+
+    <!-- 子模块列表 -->
+    <modules>
+        <module>tony-wrench-starter-dynamic-config-center</module>
+        <module>tony-wrench-test</module>
+    </modules>
+
+    <!-- 项目属性配置 -->
+    <properties>
+        <!-- 统一Java版本配置 -->
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <!-- 项目编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Maven插件版本管理 -->
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-checksum-plugin.version>1.10</maven-checksum-plugin.version>
+    </properties>
+
+    <!-- 开源许可证配置 -->
+    <licenses>
+        <license>
+            <name>Apache License</name>
+            <url>https://opensource.org/license/apache-2-0/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- 依赖版本管理 - 统一管理所有子模块的依赖版本 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Google Guava工具库 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>32.1.3-jre</version>
+            </dependency>
+            <!-- Apache Commons Lang工具库 -->
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+            <!-- Apache Commons Codec编码工具 -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.15</version>
+            </dependency>
+            <!-- 阿里巴巴FastJSON JSON处理库 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>2.0.49</version>
+            </dependency>
+            <!-- Lombok注解处理器 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.38</version>
+            </dependency>
+            <!-- JUnit测试框架 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.1</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 构建配置 -->
+    <build>
+        <!-- 资源文件配置 -->
+        <resources>
+            <!-- 主资源目录，启用变量替换 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <!-- 组装资源目录，不启用变量替换 -->
+            <resource>
+                <directory>src/assembly/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <!-- 测试资源文件配置 -->
+        <testResources>
+            <!-- 测试资源目录 -->
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+            <!-- 主资源目录也作为测试资源 -->
+            <testResource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <!-- 以下插件配置被注释掉，主要用于发布到Maven中央仓库 -->
+        <!--<plugins>
+            <!- Maven原型插件 - 用于创建项目模板 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>-->
+            <!-- Maven编译器插件 - 配置Java编译版本 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>-->
+            <!-- 版本管理插件 - 用于批量更新依赖版本 -->
+           <!-- <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>-->
+            <!-- 资源处理插件 - 处理资源文件 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <resources>
+                        <resource>
+                            <directory>src/main/resources</directory>
+                            <filtering>false</filtering>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>-->
+
+            <!-- Maven中央仓库发布插件 - 用于发布到Maven中央仓库 -->
+            <!--<plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>ossrh</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                    <autoPublish>true</autoPublish>
+                    &lt;!&ndash;<waitUntil>published</waitUntil>&ndash;&gt;
+                </configuration>
+            </plugin>-->
+
+            <!-- 源码打包插件 - 将源码打包成jar -->
+        <!--    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!-- JavaDoc文档生成插件 -->
+           <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
+                    <additionalJOption>-Xdoclint:none</additionalJOption>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                            &lt;!&ndash; 指定javadoc可执行文件路径 &ndash;&gt;
+                            <javadocExecutable>${java.home}${file.separator}..${file.separator}bin${file.separator}javadoc</javadocExecutable>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!-- Shade插件 - 用于创建可执行jar包，处理依赖冲突 -->
+          <!--  <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!-- GPG签名插件 - 用于对发布包进行数字签名 -->
+          <!--  <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    &lt;!&ndash; 指定用于签名的GPG密钥名称 &ndash;&gt;
+                    <keyname>ossrh</keyname>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!-- 校验和插件 - 生成MD5和SHA1校验和 -->
+           <!-- <plugin>
+                <groupId>net.nicoulaj.maven.plugins</groupId>
+                <artifactId>checksum-maven-plugin</artifactId>
+                <version>1.10</version>
+                <executions>
+                    &lt;!&ndash; 为所有构件生成校验和 &ndash;&gt;
+                    <execution>
+                        <id>create-checksums</id>
+                        <goals>
+                            <goal>artifacts</goal>
+                        </goals>
+                        <configuration>
+                            <algorithms>
+                                <algorithm>MD5</algorithm>
+                                <algorithm>SHA-1</algorithm>
+                            </algorithms>
+                            <attachChecksums>true</attachChecksums>
+                        </configuration>
+                    </execution>
+                    &lt;!&ndash; 为POM文件生成校验和 &ndash;&gt;
+                    <execution>
+                        <id>create-pom-checksums</id>
+                        <goals>
+                            <goal>files</goal>
+                        </goals>
+                        <configuration>
+                            <fileSets>
+                                <fileSet>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>*.pom</include>
+                                    </includes>
+                                </fileSet>
+                            </fileSets>
+                            <algorithms>
+                                <algorithm>MD5</algorithm>
+                                <algorithm>SHA-1</algorithm>
+                            </algorithms>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>&ndash;&gt;-->
+    </build>
+
+</project>

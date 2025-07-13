@@ -1,0 +1,42 @@
+# 测试配置文件
+tony:
+  wrench:
+    config:
+      # 系统名称
+      system: test-service
+      
+      # 是否启用动态配置中心
+      enabled: true
+      
+      # 配置刷新间隔（毫秒）
+      refresh-interval: 3000
+      
+      # Redis键前缀
+      key-prefix: test_config_prefix
+      
+      # 注册相关配置
+      register:
+        host: 127.0.0.1
+        port: 16379
+        password:
+        pool-size: 32
+        min-idle-size: 5
+        connect-timeout: 5000
+        idle-timeout: 8000
+        retry-attempts: 2
+        retry-interval: 500
+        keep-alive: true
+        ping-interval: 1000
+
+# 其他测试配置
+server:
+  port: 8081
+
+spring:
+  application:
+    name: test-service
+
+logging:
+  level:
+    com.study.tony.wrench: DEBUG
+    root: INFO 

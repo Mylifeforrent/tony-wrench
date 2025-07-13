@@ -1,0 +1,44 @@
+# 动态配置中心示例配置文件
+# 文件名：application-example.yml
+# 用途：展示如何使用 tony-wrench 动态配置中心
+
+tony:
+  wrench:
+    config:
+      # 系统名称 - 必填，用于标识当前应用系统
+      # 建议使用有意义的名称，如：user-service、order-service、payment-service
+      system: user-service
+      
+      # 是否启用动态配置中心 - 可选，默认值：true
+      # true：启用动态配置，会监听Redis配置变更
+      # false：禁用动态配置，使用静态配置
+      enabled: true
+      
+      # 配置刷新间隔（毫秒）- 可选，默认值：5000
+      # 建议值：1000-10000毫秒
+      # 值越小，配置更新越及时，但会增加系统负载
+      refresh-interval: 5000
+      
+      # Redis键前缀 - 可选，默认值：tony_wrench_config
+      # 用于生成Redis键的前缀，避免与其他应用的键冲突
+      key-prefix: tony_wrench_config
+
+# 其他应用配置示例
+server:
+  port: 8080
+
+spring:
+  application:
+    name: user-service
+  
+  # Redis配置（如果使用Redis作为配置存储）
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+
+# 日志配置
+logging:
+  level:
+    com.study.tony.wrench: DEBUG
+    root: INFO 

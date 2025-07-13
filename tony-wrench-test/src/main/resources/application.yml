@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: tony-wrench-test-app
+  profiles:
+    active: dev
