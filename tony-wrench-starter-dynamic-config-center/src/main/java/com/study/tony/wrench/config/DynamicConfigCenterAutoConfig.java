@@ -1,6 +1,8 @@
 package com.study.tony.wrench.config;
 
 import com.study.tony.wrench.domain.service.IDynamicConfigCenterService;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +25,7 @@ import org.springframework.context.annotation.Configuration;
  * 
  * @author Fuzhengwei bugstack.cn @小傅哥
  */
+@Slf4j
 @Configuration
 public class DynamicConfigCenterAutoConfig implements BeanPostProcessor {
 
@@ -60,6 +63,7 @@ public class DynamicConfigCenterAutoConfig implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         // 调用动态配置中心服务处理Bean
         // 这个方法会扫描Bean中的@DCCValue注解，并从Redis读取配置值
+        log.info("proxy bean name ==> {}", beanName);
         return dynamicConfigCenterService.initAttributeByProxy(bean);
     }
 

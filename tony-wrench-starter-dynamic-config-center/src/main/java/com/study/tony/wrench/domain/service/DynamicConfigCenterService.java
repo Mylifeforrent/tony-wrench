@@ -184,6 +184,7 @@ public class DynamicConfigCenterService implements IDynamicConfigCenterService {
         if (AopUtils.isAopProxy(objBean)) {
             objBeanClass = AopUtils.getTargetClass(objBean);
         }
+        log.info("key need to be updated: {}, value: {}, bean: {}", key, value, objBean.getClass().getName());
 
         try {
             // 通过反射获取字段并更新值
@@ -193,7 +194,7 @@ public class DynamicConfigCenterService implements IDynamicConfigCenterService {
             field.set(objBean, value);
             field.setAccessible(false);
 
-            log.info("DCC 节点监听，动态设置值 {} {}", key, value);
+            log.info("DCC 节点监听，动态设置值 key: {} value: {}, class: {}", key, value, objBean.getClass().getName());
 
         } catch (Exception e) {
             throw new RuntimeException(e);
