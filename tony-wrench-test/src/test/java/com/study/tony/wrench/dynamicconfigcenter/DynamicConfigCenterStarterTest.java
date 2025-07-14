@@ -1,5 +1,6 @@
-package com.study.tony.wrench;
+package com.study.tony.wrench.dynamicconfigcenter;
 
+import com.study.tony.wrench.TonyWrenchTestApplication;
 import com.study.tony.wrench.domain.model.valobj.AttributeVO;
 import com.study.tony.wrench.types.annotations.DCCValue;
 import lombok.extern.slf4j.Slf4j;

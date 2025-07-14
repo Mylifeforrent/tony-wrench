@@ -1,4 +1,4 @@
-package com.study.tony.wrench;
+package com.study.tony.wrench.dynamicconfigcenter;
 
 import com.study.tony.wrench.domain.model.valobj.AttributeVO;
 import lombok.extern.slf4j.Slf4j;
