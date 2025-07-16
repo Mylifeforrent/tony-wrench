@@ -1,5 +1,5 @@
 # Spring Boot Auto Configuration
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.study.tony.wrench.config.DynamicConfigCenterRegisterAutoConfig,\
-com.study.tony.wrench.config.DynamicConfigCenterAutoConfiguration,\
-com.study.tony.wrench.config.DynamicConfigCenterAutoConfig
+com.study.tony.wrench.configcenter.config.DynamicConfigCenterRegisterAutoConfig,\
+com.study.tony.wrench.configcenter.config.DynamicConfigCenterAutoConfiguration,\
+com.study.tony.wrench.configcenter.config.DynamicConfigCenterAutoConfig
