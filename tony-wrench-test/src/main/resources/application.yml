@@ -3,3 +3,23 @@ spring:
     name: tony-wrench-test-app
   profiles:
     active: dev
+
+server:
+  port: 8091
+
+# 线程池配置
+thread:
+  pool:
+    executor:
+      config:
+        core-pool-size: 20
+        max-pool-size: 50
+        keep-alive-time: 5000
+        block-queue-size: 5000
+        policy: CallerRunsPolicy
+
+# 日志
+logging:
+  level:
+    root: info
+  config: classpath:logback-spring.xml

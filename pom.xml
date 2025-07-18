@@ -27,6 +27,7 @@
     <!-- 子模块列表 -->
     <modules>
         <module>tony-wrench-starter-dynamic-config-center</module>
+        <module>tony-wrench-starter-design-framework</module>
         <module>tony-wrench-test</module>
     </modules>
 
@@ -125,6 +126,15 @@
                 <filtering>true</filtering>
             </testResource>
         </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
 
         <!-- 以下插件配置被注释掉，主要用于发布到Maven中央仓库 -->
         <!--<plugins>

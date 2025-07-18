@@ -11,7 +11,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>tony-wrench-test</name>
     <description>tony-wrench-test</description>
-
     <packaging>jar</packaging>
 
     <dependencies>
@@ -54,6 +53,12 @@
         <dependency>
             <groupId>com.study.tony.wrench</groupId>
             <artifactId>tony-wrench-starter-dynamic-config-center</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- 设计模式框架 -->
+        <dependency>
+            <groupId>com.study.tony.wrench</groupId>
+            <artifactId>tony-wrench-starter-design-framework</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
