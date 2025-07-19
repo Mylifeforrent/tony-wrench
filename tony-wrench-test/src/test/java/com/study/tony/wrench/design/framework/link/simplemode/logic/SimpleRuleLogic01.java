@@ -1,0 +1,20 @@
+package com.study.tony.wrench.design.framework.link.simplemode.logic;
+
+import com.study.tony.wrench.design.framework.link.simplemode.AbstractLogicChainNode;
+import com.study.tony.wrench.design.framework.link.simplemode.factory.SimpleTradeRuleFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Service
+public class SimpleRuleLogic01 extends AbstractLogicChainNode<String, SimpleTradeRuleFactory.DynamicContext, String> {
+
+    @Override
+    public String apply(String requestParameter, SimpleTradeRuleFactory.DynamicContext dynamicContext) throws Exception {
+
+        log.info("apply SimpleRuleLogic01 business logic...");
+
+        return next(requestParameter, dynamicContext);
+    }
+
+}
