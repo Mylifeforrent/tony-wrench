@@ -61,6 +61,12 @@
             <artifactId>tony-wrench-starter-design-framework</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- 限流 -->
+        <dependency>
+            <groupId>com.study.tony.wrench</groupId>
+            <artifactId>tony-wrench-starter-rate-limiter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

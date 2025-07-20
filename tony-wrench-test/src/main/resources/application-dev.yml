@@ -3,6 +3,8 @@ server:
 
 tony:
   wrench:
+    ratelimiter:
+      enabled: true
     config:
       # 系统名称 - 必填，用于标识当前应用系统
       # 建议使用有意义的名称，如：user-service、order-service、payment-service

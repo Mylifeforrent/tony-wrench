@@ -28,6 +28,8 @@
     <modules>
         <module>tony-wrench-starter-dynamic-config-center</module>
         <module>tony-wrench-starter-design-framework</module>
+        <module>tony-wrench-starter-rate-limiter</module>
+        <module>tony-wrench-bom</module>
         <module>tony-wrench-test</module>
     </modules>
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.study.tony.wrench</groupId>
+    <artifactId>tony-wrench-bom</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>tony-wrench-bom</name>
+    <packaging>pom</packaging>
+    <description>tony-wrench-bom</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 动态配置中心 -->
+            <dependency>
+                <groupId>com.study.tony.wrench</groupId>
+                <artifactId>tony-wrench-starter-dynamic-config-center</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <!-- 设计模式框架 -->
+            <dependency>
+                <groupId>com.study.tony.wrench</groupId>
+                <artifactId>tony-wrench-starter-design-framework</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <!-- ratelimiter -->
+            <dependency>
+                <groupId>com.study.tony.wrench</groupId>
+                <artifactId>tony-wrench-starter-rate-limiter</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
